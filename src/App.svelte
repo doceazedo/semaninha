@@ -197,7 +197,7 @@
 
   #screenshot {
     position: absolute;
-    bottom: -999999vh;
+    bottom: -2500px;
     left: 0;
   }
 
