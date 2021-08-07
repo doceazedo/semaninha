@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap');
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #23272A;
+  max-width: 1000px;
+  margin: auto;
+}
+
+body,
+button,
+input {
+  font-family: 'Sen', sans-serif;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    padding: 1.5rem;
+  }
+}
