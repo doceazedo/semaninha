@@ -15,7 +15,6 @@ const TextInput = styled.input`
   padding: .75rem 1.5rem;
   outline: none;
   border-radius: .5rem;
-  margin-bottom: 1rem;
 `;
 
 function Input(props) {
