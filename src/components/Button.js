@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.button`
+const Box = styled.button`
   width: fit-content;
   margin: 0;
   margin-top: 4rem;
+  margin-left: auto;
   padding: .75rem 1.5rem;
   background-color: #EB459E;
   border-radius: .5rem;
@@ -66,7 +67,7 @@ const handleClick = (event, props) => {
 
 function Button(props) {
   return (
-    <Wrapper disabled={props.disabled} onClick={(event) => handleClick(event, props)}>{props.children}</Wrapper>
+    <Box disabled={props.disabled} onClick={(event) => handleClick(event, props)}>{props.children}</Box>
   );
 }
 

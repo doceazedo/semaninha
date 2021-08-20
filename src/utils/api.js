@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://musicwrap-api.herokuapp.com/v1',
+  baseURL: process.env.REACT_APP_API_BASEURL,
 });
 
 export default api;
