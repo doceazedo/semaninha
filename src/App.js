@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import Title from './components/Title';
 import Button from './components/Button';
 import Input from './components/Input';
@@ -43,34 +43,34 @@ function App() {
     case 'userStep':
     default:
       stepComponent = (
-        <Fragment>
+        <>
           <Input
             label="Primeiro, qual o seu usuário do last.fm?"
             value={username}
             onChangeValue={changeUsername}
             />
           <Button disabled={username.length === 0} setStep={() => setStep('themeStep')}>Continuar</Button>
-        </Fragment>
+        </>
       );
       break;
 
     case 'themeStep':
       stepComponent = (
-        <Fragment>
+        <>
           <Themes theme={theme} setTheme={setTheme} />
           <Button disabled={!theme || isLoading} setStep={generate} setIsLoading={setIsLoading}>{isLoading ? 'Gerando imagem...' : 'Baixar imagem'}</Button>
-        </Fragment>
+        </>
       );
       break;
   }
 
   return (
-    <Fragment>
+    <>
       <Title/>
 
       {stepComponent}
 
-    </Fragment>
+    </>
   );
 }
 

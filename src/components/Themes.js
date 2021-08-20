@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import api from '../utils/api';
 
@@ -56,12 +56,12 @@ function Themes(props) {
   }, []);
   
   return (
-    <Fragment>
+    <>
       <Title>Agora escolha um tema:</Title>
       <List>
         {themes.map((item, index) => renderThemeItem(item, index))}
       </List>
-    </Fragment>
+    </>
   );
 }
 

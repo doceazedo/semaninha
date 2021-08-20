@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import styled from 'styled-components';
 
 const Logo = styled.h1`
@@ -19,10 +18,10 @@ const Slogan = styled.h2`
 
 function Title() {
   return (
-    <Fragment>
+    <>
       <Logo>musicwrap<span>.xyz</span></Logo>
       <Slogan>Compartilhe o que você tem ouvida na semana!</Slogan>
-    </Fragment>
+    </>
   );
 }
 
