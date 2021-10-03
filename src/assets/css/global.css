@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap');
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #23272A;
+  max-width: 800px;
+  margin: auto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body,
+button,
+input {
+  font-family: 'Sen', sans-serif;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.github-corner svg {
+  fill: #fff;
+  color: #23272A;
+  position: absolute;
+  top: 0;
+  border: 0;
+  right: 0;
+}
+
+.github-corner .octo-arm {
+  transform-origin: 130px 106px;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform:rotate(0);
+  }
+  
+  20%,
+  60% {
+    transform:rotate(-25deg);
+  }
+  
+  40%,
+  80% {
+    transform:rotate(10deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body,
+  button,
+  input {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    padding: 1.5rem;
+  }
+}
