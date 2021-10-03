@@ -22,7 +22,7 @@ const messagesArr = [
 
 const getRandomMessage = () => messagesArr[Math.floor(Math.random() * messagesArr.length)];
 
-function LoadingMessages() {
+const LoadingMessages = () => {
   const [ message, setMessage ] = useState(getRandomMessage());
 
   useEffect(() => {

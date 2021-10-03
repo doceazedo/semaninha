@@ -9,6 +9,10 @@ const Logo = styled.h1`
   span {
     color: rgba(255, 255, 255, .75);
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 const Slogan = styled.h2`
@@ -16,13 +20,17 @@ const Slogan = styled.h2`
   text-align: center;
   color: rgba(255, 255, 255, .75);
   margin-bottom: 4rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.25rem;
+  }
 `;
 
-function Title() {
+const Title = () => {
   return (
     <>
       <Logo>musicwrap<span>.xyz</span></Logo>
-      <Slogan>Compartilhe o que você tem ouvida na semana!</Slogan>
+      <Slogan>Compartilhe o que você mais ouviu nessa semana!</Slogan>
     </>
   );
 }

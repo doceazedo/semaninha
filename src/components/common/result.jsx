@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import confetti from 'canvas-confetti';
 
-function Result(props) {
+const Result = ({ src, setStep }) => {
 
   const Image = styled.ul`
     display: flex;
@@ -13,7 +13,7 @@ function Result(props) {
       height: 260px;
       width: 150px;
       border-radius: .5rem;
-      background-image: url('${props.src}');
+      background-image: url('${src}');
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -32,6 +32,15 @@ function Result(props) {
 
     li:last-child {
       transform: rotate(5deg) translate(-50px, 10px) scale(.95);
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      justify-content: center;
+
+      li {
+        flex-shrink: 0;
+      }
     }
   `;
 
@@ -62,6 +71,20 @@ function Result(props) {
 
     button:nth-child(2) {
       background-color: #1da1f2;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        width: 75%;
+      }
+
+      button:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: .5rem;
+      }
     }
   `;
 
@@ -99,7 +122,7 @@ function Result(props) {
         { /* FIXME: plain bad */ }
         <button onClick={() => { window.open('https://instagram.com') }}>Postar no Story</button>
         <button onClick={() => { window.open('https://twitter.com') }}>Postar no Twitter</button>
-        <button onClick={() => props.setStep()}>Voltar ao início</button>
+        <button onClick={setStep}>Voltar ao início</button>
       </Buttons>
     </>
   );

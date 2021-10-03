@@ -17,11 +17,11 @@ const TextInput = styled.input`
   border-radius: .5rem;
 `;
 
-function Input(props) {
+const Input = ({ label, value, onChangeValue, placeholder }) => {
   return (
     <Wrapper>
-      <Label>{props.label}</Label>
-      <TextInput value={props.value} onChange={props.onChangeValue}/>
+      <Label>{label}</Label>
+      <TextInput value={value} onChange={onChangeValue} placeholder={placeholder}/>
     </Wrapper>
   );
 }

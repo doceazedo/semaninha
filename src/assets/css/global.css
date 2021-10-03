@@ -28,8 +28,8 @@ input {
 }
 
 .github-corner svg {
-  fill:#fff;
-  color:#151513;
+  fill: #fff;
+  color: #23272A;
   position: absolute;
   top: 0;
   border: 0;
@@ -58,6 +58,14 @@ input {
   40%,
   80% {
     transform:rotate(10deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body,
+  button,
+  input {
+    font-size: 1rem;
   }
 }
 

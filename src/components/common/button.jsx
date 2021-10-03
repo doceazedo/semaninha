@@ -65,9 +65,9 @@ const handleClick = (event, props) => {
   if (props.setIsLoading) props.setIsLoading(true);
 }
 
-function Button(props) {
+const Button = (props) => {
   return (
-    <Box disabled={props.disabled} onClick={(event) => handleClick(event, props)}>{props.children}</Box>
+    <Box disabled={props.disabled} onClick={event => handleClick(event, props)}>{props.children}</Box>
   );
 }
 
