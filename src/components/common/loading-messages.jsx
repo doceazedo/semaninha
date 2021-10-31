@@ -11,7 +11,7 @@ const messagesArr = [
   'Dando uma olhada no seu histórico (só de músicas, viu?) 🤭',
   'Não feche a página não, tá quase lá...',
   'Aguarde só mais alguns segundinhos...',
-  'Aproveita e me segue no last.fm! @pxlucasf',
+  'Aproveita e me segue no last.fm! @doceazedo911',
   'É... você vem sempre aqui? 😳👉👈',
   'Desenhando cada pixel individualmente...',
   'Era pra eu gerar uma imagem??? Vishe, peraí...',

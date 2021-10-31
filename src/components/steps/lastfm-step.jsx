@@ -6,7 +6,7 @@ const LastfmStep = ({username, changeUsername, setStep}) => (
       label="Primeiro, qual o seu usuário do last.fm?"
       value={username}
       onChangeValue={changeUsername}
-      placeholder="pxlucasf"/>
+      placeholder="doceazedo911"/>
     <Button disabled={username.length === 0} setStep={() => setStep('theme')}>Continuar</Button>
   </>
 );
