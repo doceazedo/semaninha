@@ -2,6 +2,7 @@
   import { scale } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { validUsername } from '../stores';
+  import { WarningIcon } from '$lib/icons';
 
   export let label: string, value: string, placeholder: string, lastfm: boolean;
   let avatar: string;
@@ -26,13 +27,17 @@
   }
 </script>
 
-<div>
+<div class:invalid={value.length && $validUsername === false}>
   <label for="">{label}</label>
   <input type="text" bind:value {placeholder} on:keyup={handleKeyUp}>
 
   {#if lastfm && $validUsername}
     <img on:load={loadAvatar} out:scale={{duration: 200, start: .75, easing: quintOut}} src={avatar} alt="Avatar de {value}">
   {/if}
+
+  <i>
+    <WarningIcon />
+  </i>
 </div>
 
 <style lang="sass">
@@ -73,6 +78,27 @@
       &:not(.loaded)
         transform: scale(.75)
         opacity: 0
+
+    i
+      display: flex
+      justify-content: center
+      align-items: center
+      position: absolute
+      bottom: 10px
+      right: .75rem
+      height: 2rem
+      width: 2rem
+      padding-bottom: 3px
+      border-radius: 50%
+      background-color: $danger
+      transition: all .2s ease-out
+
+    &.invalid input
+      box-shadow: 0 0 0 2px $danger
+
+    &:not(.invalid) i
+      transform: scale(.75)
+      opacity: 0
 
   @media screen and (max-width: 768px)
     div label

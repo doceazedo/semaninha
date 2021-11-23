@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import { Ratio } from './enums';
 
 export const username = writable('');
-export const validUsername = writable(false);
+export const validUsername = writable(null);
 export const period = writable('7day');
 export const ratio = writable(Ratio.Square);
 export const theme = writable('');
