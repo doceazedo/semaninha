@@ -5,7 +5,6 @@ import generateScreenshot from './generate-screenshot';
 const handlebarsToImage = async (templateName: string, params): Promise<any> => {
   const template = (await fs.readFile(`src/templates/${templateName}.handlebars`)).toString();
   const compile = handlebars.compile(template);
-  console.log(compile(params));
   const image = await generateScreenshot(compile(params), params.ratio);
 
   return {

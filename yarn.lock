@@ -97,9 +97,9 @@
     tiny-glob "^0.2.9"
 
 "@sveltejs/kit@next":
-  version "1.0.0-next.197"
-  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.197.tgz#08331a0498e4c01c3fa17c8e8e8906454e2140b1"
-  integrity sha512-kxs820/UODwYyi5dZaCUFhfFT5M/kaGbxbbGUANBzUnvE8O6dnMZUsJtb2w8IepnjWAn5AWtYfaqhFS1gTdMxw==
+  version "1.0.0-next.198"
+  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.198.tgz#99cd87db488e9a20e9ae65d4d384d4ca3a92caac"
+  integrity sha512-BgXVrCOn0sYNAvmSIXxfztntGzb4ZhaO3KSmJzkSeQQg20+aQGqyOJnhTQ+wDX+YhyKURxVOhjTWHjeO6d7gdw==
   dependencies:
     "@sveltejs/vite-plugin-svelte" "^1.0.0-next.30"
     cheap-watch "^1.0.4"
@@ -124,9 +124,9 @@
   integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
 "@types/node@*":
-  version "16.11.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.9.tgz#879be3ad7af29f4c1a5c433421bf99fab7047185"
-  integrity sha512-MKmdASMf3LtPzwLyRrFjtFFZ48cMf8jmX5VRYrDQiJa8Ybu5VAmkqBWqKU8fdCwD8ysw4mQ9nrEHvzg6gunR7A==
+  version "16.11.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.10.tgz#2e3ad0a680d96367103d3e670d41c2fed3da61ae"
+  integrity sha512-3aRnHa1KlOEEhJ6+CvyHKK5vE9BcLGjtUpwvqYLRvYNQKMfabu3BwfJaA/SLW8dxe28LsNDjtHwePTuzn3gmOA==
 
 "@types/pug@^2.0.4":
   version "2.0.5"
