@@ -3,6 +3,7 @@
   import { browser } from '$app/env';
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import confetti from 'canvas-confetti';
   import { blobURL, step, ratio } from '../../stores';
 
   let instagramUrl = 'instagram://story-camera';
@@ -11,6 +12,24 @@
     if (!browser) return;
     // userAgentData is still experimental
     if (navigator?.userAgentData?.mobile === false) instagramUrl = 'https://instagram.com';
+
+    const duration = 5000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    const randomInRange = (min: number, max: number) => {
+      return Math.random() * (max - min) + min;
+    }
+
+    const interval = setInterval(function() {
+      const timeLeft = animationEnd - Date.now();
+      if (timeLeft <= 0) return clearInterval(interval);
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(.1, .3), y: Math.random() - 0.2 } }));
+      confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(.7, .9), y: Math.random() - 0.2 } }));
+    }, 250);
   });
 </script>
 
