@@ -1,0 +1,24 @@
+body {
+  background-color: #323232;
+  overflow-x: hidden;
+}
+
+body,
+button,
+input,
+select {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 0 1.5rem;
+  }
+}
