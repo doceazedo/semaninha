@@ -1,8 +1,6 @@
-<h1>
+<h1 align="center">
   <a href="https://semaninha.com">
-    <center>
-      <img src="./static/img/logo.svg" height="64">
-    </center>
+    <img src="./static/img/logo.svg" height="64">
   </a>
 </h1>
 
