@@ -36,7 +36,7 @@ export const fetchTopTracks = async (user: string, period = '7day', limit = 4): 
 
   for (const track of data.toptracks.track) {
     const deezer = await(await fetch(`https://api.deezer.com/search?q=${track.name} ${track.artist.name}`)).json();
-    if (!deezer.total) return; // TODO: use cover from last.fm as placeholder/fallback
+    if (!deezer.total) continue; // TODO: use cover from last.fm as placeholder/fallback
     track.image = deezer.data[0].album.cover_big; // TODO: return all sizes
   }
 
