@@ -1,4 +1,6 @@
 import dotenv from 'dotenv';
+import { covers } from '../../helpers';
+
 dotenv.config();
 
 const fetchLastFmData = async (params): Promise<any> => {
@@ -35,7 +37,14 @@ export const fetchTopTracks = async (user: string, period = '7day', limit = 4): 
   if (data?.error) return [ null, { status: 500, body: { error: data?.message } } ];
 
   for (const track of data.toptracks.track) {
-    const deezer = await(await fetch(`https://api.deezer.com/search?q=${track.name} ${track.artist.name}`)).json();
+    const query = `${track.name} ${track.artist.name}`;
+
+    if (covers[query]) {
+      track.image = covers[query];
+      continue;
+    }
+
+    const deezer = await(await fetch(`https://api.deezer.com/search?q=${query}`)).json();
     if (!deezer.total) continue; // TODO: use cover from last.fm as placeholder/fallback
     track.image = deezer.data[0].album.cover_big; // TODO: return all sizes
   }
