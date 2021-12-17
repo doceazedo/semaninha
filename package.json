@@ -32,7 +32,6 @@
     "dotenv": "^10.0.0",
     "handlebars": "^4.7.7",
     "puppeteer": "^13.0.0",
-    "spotify-web-api-node": "^5.0.2",
-    "swiper": "^7.3.3"
+    "spotify-web-api-node": "^5.0.2"
   }
 }

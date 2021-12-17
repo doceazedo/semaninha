@@ -1,34 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { Swiper, SwiperSlide } from 'swiper/svelte';
-  import SwiperCore, { Pagination } from 'swiper';
-  import 'swiper/css';
-  import 'swiper/css/pagination';
-  import { browser } from '$app/env';
   import type { Theme } from '../interfaces';
   import { theme as selected, ratio } from '../stores';
 
-  if (browser) {
-    SwiperCore.use([ Pagination ]);
-  }
-
   let themes: Theme[] = [];
-  let clickable = true;
-  let slidesPerView = 4;
-
   onMount(async () => {
     themes = await(await fetch('/api/themes')).json();
-    updateSwiperAndTheme();
-
-    if (browser && screen.width <= 768) slidesPerView = 2;
   });
-
-  const updateSwiper = () => {
-    // I can't use swiper.update() for some reason, this makes
-    // swiper update itself
-    clickable = false;
-    setTimeout(() => clickable = true, 1);
-  }
 
   const updateTheme = () => {
     if (!$selected) return;
@@ -39,28 +17,20 @@
     if (!theme?.ratios.includes($ratio)) $selected = ''; // FIXME:
   }
 
-  const updateSwiperAndTheme = () => {
-    updateSwiper();
-    updateTheme();
-  }
-
-  $: $ratio, updateSwiperAndTheme();
+  $: $ratio, updateTheme();
 </script>
 
 <div
+  class="themes"
   class:square={$ratio == '1by1'}
   class:vertical={$ratio == '9by16'}
   class:horizontal={$ratio == '16by9'}
 >
   <label for="">Escolha um tema:</label>
-  <Swiper
-    {slidesPerView}
-    spaceBetween={16}
-    pagination={{ clickable }}
-  >
+  <div class="slider">
     {#each themes as theme}
       {#if theme.ratios.includes($ratio)}
-        <SwiperSlide>
+        <div class="slide">
           <div
             class="theme"
             on:click={() => $selected = theme.slug}
@@ -69,16 +39,16 @@
             <img src="/img/demos/{theme.slug}-{$ratio}.webp" alt="">
             <span>{theme.name}</span>
           </div>
-        </SwiperSlide>
+        </div>
       {/if}
     {/each}
-  </Swiper>
+  </div>
 </div>
 
 <style lang="sass">
   @import '../vars'
 
-  div
+  .themes
     display: flex
     flex-direction: column
 
@@ -86,20 +56,33 @@
       margin-bottom: 0.5rem
       font-size: 1.25rem
 
-    :global(.swiper)
+    .slider
+      display: flex
       width: 100%
-      padding-bottom: 1.5rem
+      overflow-x: auto
       transition: height .2s ease
+      padding-bottom: .5rem
 
-    :global(.swiper-pagination)
-      bottom: 0
+      &::-webkit-scrollbar
+        height: .25rem
 
-    :global(.swiper-pagination-bullet-active)
-      background-color: $primary
+      &::-webkit-scrollbar-track
+        background: $darker
+
+      &::-webkit-scrollbar-thumb
+        background: $primary
+
+      .slide
+        flex-shrink: 0
+        width: calc(25% - 1rem)
+
+        &:not(:last-child)
+          margin-right: 1rem
 
     .theme
       position: relative
       display: flex
+      flex-direction: column
       align-items: center
       height: 100%
       background-color: $darker
@@ -124,26 +107,29 @@
         align-items: center
         flex-grow: 1
 
-    &.square :global(.swiper)
-      height: 16rem
+    &.square .slider
+      height: 14.5rem
 
-    &.vertical :global(.swiper)
-      height: 25rem
+    &.vertical .slider
+      height: 23.5rem
 
-    &.horizontal :global(.swiper)
-      height: 10.75rem
+    &.horizontal .slider
+      height: 9.5rem
 
   @media screen and (max-width: 768px)
     div
       label
         font-size: 1rem
 
-      &.square :global(.swiper)
-        height: 15rem
+      .slider .slide
+        width: calc(50% - 1rem) !important 
 
-      &.vertical :global(.swiper)
-        height: 23.75rem
+      &.square .slider
+        height: 13.5rem !important
 
-      &.horizontal :global(.swiper)
-        height: 10.5rem
+      &.vertical .slider
+        height: 22rem !important
+
+      &.horizontal .slider
+        height: 9rem !important
 </style>
