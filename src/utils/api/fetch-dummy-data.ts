@@ -1,6 +1,8 @@
+const placeholderImage = 'https://i.imgur.com/y17yg7c.png'
+
 const dummyTrack = {
   name: 'Dummy Song',
-  image: 'https://i.imgur.com/y17yg7c.png',
+  image: placeholderImage,
   artist: {
     name: 'Unknown Artist'
   },
@@ -90,6 +92,24 @@ const trackTitles = [
   'Shifter',
 ];
 
+const artistNames = [
+  'Angel',
+  'Storm',
+  'Whistle',
+  'Coil',
+  'Might',
+  'Mind',
+  'Jamie Marshall',
+  'Christopher Waters',
+  'Logan Webb',
+  'Rebecca Bear',
+  'Bethany Child',
+  'Carolyn',
+  'Faith Laine',
+  'Violet Johnson',
+  'Melissa',
+]
+
 const artists = [];
 
 const getRandomInt = (min, max) => {
@@ -98,38 +118,53 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const imageUrl = 'https://thispersondoesnotexist.com/image';
+// const imageUrl = `https://avatars.dicebear.com/api/big-ears-neutral/${getRandomInt(0, 1000)}.svg`;
+
+const user = {
+  playcount: getRandomInt(1000, 10000),
+  realname: 'Jay Doe',
+  image: [
+    { size: 'small',      '#text': imageUrl },
+    { size: 'medium',     '#text': imageUrl },
+    { size: 'large',      '#text': imageUrl },
+    { size: 'extralarge', '#text': imageUrl },
+  ],
+  gender: 'n',
+  name: 'jaydoe',
+};
+
 const fetchDummyData = (limit: number) => {
   const track = [];
   for (let i = 0; i < limit; i++) {
     const newTrack = { ...dummyTrack };
 
     newTrack.name = trackTitles[Math.floor(Math.random() * trackTitles.length)];
+    newTrack.artist.name = artistNames[Math.floor(Math.random() * artistNames.length)];
     newTrack['@attr'].rank = i + 1;
     newTrack.playcount = i * (limit - i) * getRandomInt(10, 20);
     track.push(newTrack);
   }
 
-  const imageUrl = `https://thispersondoesnotexist.com/image`;
-  // const imageUrl = `https://avatars.dicebear.com/api/big-ears-neutral/${getRandomInt(0, 1000)}.svg`;
+  const artist = [];
+  for (let i = 0; i < limit; i++) {
+    artist.push({
+      name: artistNames[Math.floor(Math.random() * artistNames.length)],
+      image: placeholderImage,
+      playcount: getRandomInt(2, 5) * (limit - i)
+    });
+  }
 
   return {
-    user: {
-      playcount: getRandomInt(1000, 10000),
-      realname: 'Jay Doe',
-      image: [
-        { size: 'small',      '#text': imageUrl },
-        { size: 'medium',     '#text': imageUrl },
-        { size: 'large',      '#text': imageUrl },
-        { size: 'extralarge', '#text': imageUrl },
-      ],
-      gender: 'n',
-      name: 'jaydoe',
-    },
+    user,
     tracks: {
       track,
       '@attr': {
         total: limit * 123
       }
+    },
+    artists: {
+      artist
     }
   }
 }

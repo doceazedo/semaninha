@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { covers } from '../../helpers';
+import { fetchArtistImage } from './spotify';
 
 dotenv.config();
 
@@ -37,7 +38,7 @@ export const fetchTopTracks = async (user: string, period = '7day', limit = 4): 
   if (data?.error) return [ null, { status: 500, body: { error: data?.message } } ];
 
   for (const track of data.toptracks.track) {
-    const query = `${track.name} ${track.artist.name}`;
+    const query = `${track.artist.name} ${track.name}`;
 
     if (covers[query]) {
       track.image = covers[query];
@@ -51,6 +52,26 @@ export const fetchTopTracks = async (user: string, period = '7day', limit = 4): 
 
   return [
     data.toptracks,
+    null
+  ];
+}
+
+export const fetchTopArtists = async (user: string, period = '7day', limit = 4): Promise<[any, any]> => {
+  const data = await fetchLastFmData({
+    method: 'user.gettopartists',
+    user,
+    period,
+    limit
+  });
+
+  if (data?.error) return [ null, { status: 500, body: { error: data?.message } } ];
+
+  for (const artist of data.topartists.artist) {
+    artist.image = await fetchArtistImage(artist.name);
+  }
+
+  return [
+    data.topartists,
     null
   ];
 }
