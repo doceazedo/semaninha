@@ -11,6 +11,7 @@
   import { username, period, ratio, theme, validUsername, step, blobURL } from '../../stores';
   import { periods } from '../../helpers';
   import { b64toBlob, download, generate } from '../../utils';
+  import { UsernameInput } from '../../modules';
 
   const send = async () => {
     $step = 'loading';
@@ -45,11 +46,7 @@
 
 <div transition:slide={{duration: 800, easing: quintOut }}>
   <section class="section">
-    <Input
-      bind:value={$username}
-      label="Seu usuário:"
-      placeholder="Digite seu @ do last.fm aqui!"
-      lastfm />
+    <UsernameInput />
   </section>
   
   <section class="section">

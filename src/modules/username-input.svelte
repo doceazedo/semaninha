@@ -1,23 +1,22 @@
 <script lang="ts">
   import { scale } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import { validUsername } from '../stores';
+  import { username, validUsername } from '../stores';
+  import { Input } from '$lib/form';
   import { WarningIcon } from '$lib/icons';
 
-  export let label: string, value: string, placeholder: string, lastfm: boolean;
-  let avatar: string;
   let delay: any;
+  let avatar: string;
 
   const handleKeyUp = () => {
-    if (!lastfm) return;
-    if (!value.trim().length) return $validUsername = false;
+    if (!$username.trim().length) return $validUsername = false;
 
     clearTimeout(delay);
     delay = setTimeout(fetchUser, 500);
   }
 
   const fetchUser = async () => {
-    const user = await(await fetch(`/api/user/${value}`)).json();
+    const user = await(await fetch(`/api/user/${$username}`)).json();
     $validUsername = user.isValid;
     if (user.isValid) avatar = user.avatar;
   }
@@ -27,12 +26,15 @@
   }
 </script>
 
-<div class:invalid={value.length && $validUsername === false}>
-  <label for="">{label}</label>
-  <input type="text" bind:value {placeholder} on:keyup={handleKeyUp}>
+<div class:invalid={$username.length && $validUsername === false}>
+  <Input
+    bind:value={$username}
+    on:keyup={handleKeyUp}
+    label="Seu usuário:"
+    placeholder="Digite seu @ do last.fm aqui!" />
 
-  {#if lastfm && $validUsername}
-    <img on:load={loadAvatar} out:scale={{duration: 200, start: .75, easing: quintOut}} src={avatar} alt="Avatar de {value}">
+  {#if $validUsername}
+    <img on:load={loadAvatar} out:scale={{duration: 200, start: .75, easing: quintOut}} src={avatar} alt="Avatar de {$username}">
   {/if}
 
   <i>
@@ -45,24 +47,6 @@
 
   div
     position: relative
-    display: flex
-    flex-direction: column
-
-    label
-      margin-bottom: 0.5rem
-      font-size: 1.25rem
-
-    input
-      padding: 1rem
-      font-size: 1rem
-      border-radius: 0.5rem
-      background-color: $darker
-      border: none
-      outline: none
-      transition: all .2s ease
-
-      &:focus
-        box-shadow: 0 0 0 2px $primary
 
     img
       position: absolute
@@ -93,14 +77,10 @@
       background-color: $danger
       transition: all .2s ease-out
 
-    &.invalid input
+    &.invalid :global(input)
       box-shadow: 0 0 0 2px $danger
 
     &:not(.invalid) i
       transform: scale(.75)
       opacity: 0
-
-  @media screen and (max-width: 768px)
-    div label
-      font-size: 1rem
 </style>
