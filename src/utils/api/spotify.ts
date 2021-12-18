@@ -26,3 +26,12 @@ export const fetchArtistImage = async (name: string): Promise<string> => {
   const artist = artists.body.artists.items.find(artist => artist.name.toLowerCase() == name.toLowerCase())
   return artist ? artist.images[0].url : '';
 }
+
+export const fetchCoverImage = async (query: string): Promise<string> => {
+  await setupApi();
+
+  const tracks = await spotifyApi.searchTracks(query, { limit: 1 });
+  const items = tracks.body.tracks.items;
+  console.log(items.length ? items[0].album.images[0].url : '-');
+  return items.length ? items[0].album.images[0].url : '';
+}
