@@ -1,6 +1,7 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import { browser } from '$app/env';
   import {
     Fields,
     Select,
@@ -29,6 +30,8 @@
       // TODO: toast com mensagem de erro
       return;
     }
+
+    if (browser) localStorage.setItem('username', $username);
 
     const imageBuffer = await resp.arrayBuffer();
     const contentType = resp.headers.get('content-type').toLowerCase();

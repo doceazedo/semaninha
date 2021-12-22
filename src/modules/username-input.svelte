@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { scale } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
+  import { browser } from '$app/env';
   import { username, validUsername } from '../stores';
   import { Input } from '$lib/form';
   import { WarningIcon } from '$lib/icons';
@@ -24,6 +26,12 @@
   const loadAvatar = event => {
     event.target.classList.add('loaded');
   }
+
+  onMount(() => {
+    if (!browser) return;
+    $username = localStorage.getItem('username') || '';
+    if ($username) fetchUser();
+  });
 </script>
 
 <div class:invalid={$username.length && $validUsername === false}>
