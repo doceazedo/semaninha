@@ -25,7 +25,7 @@ const validateGenerateRequest = async (params: Params, ratios: Ratio[], fields: 
     const inputValue = params?.fields[field.id];
     if (!inputValue) fieldErrors.push(`Missing field ${field.id}`);
     
-    const isInputValid = field.values?.find(x => x == inputValue) || (inputValue > 0 && inputValue < field.colors.length);
+    const isInputValid = field.values?.find(x => x == inputValue) || (inputValue >= 0 && inputValue < field.colors.length);
     if (!isInputValid) fieldErrors.push(`Invalid value for field ${field.id}`);
   });
   if (fieldErrors.length) return [ null, { status: 400, body: { error: fieldErrors.join('. ') } } ];

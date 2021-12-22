@@ -1,8 +1,11 @@
-const placeholderImage = 'https://i.imgur.com/y17yg7c.png'
+import dotenv from 'dotenv';
+dotenv.config();
+
+const placeholderAvatarUrl = 'https://adorable-avatars.broken.services';
 
 const dummyTrack = {
   name: 'Dummy Song',
-  image: placeholderImage,
+  image: '',
   artist: {
     name: 'Unknown Artist'
   },
@@ -108,9 +111,7 @@ const artistNames = [
   'Faith Laine',
   'Violet Johnson',
   'Melissa',
-]
-
-const artists = [];
+];
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -118,23 +119,21 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const imageUrl = 'https://thispersondoesnotexist.com/image';
-// const imageUrl = `https://avatars.dicebear.com/api/big-ears-neutral/${getRandomInt(0, 1000)}.svg`;
-
-const user = {
-  playcount: getRandomInt(1000, 10000),
-  realname: 'Jay Doe',
-  image: [
-    { size: 'small',      '#text': imageUrl },
-    { size: 'medium',     '#text': imageUrl },
-    { size: 'large',      '#text': imageUrl },
-    { size: 'extralarge', '#text': imageUrl },
-  ],
-  gender: 'n',
-  name: 'jaydoe',
-};
-
 const fetchDummyData = (limit: number) => {
+  const userAvatar = `${placeholderAvatarUrl}/${getRandomInt(0, 1000)}`;
+  const user = {
+    playcount: getRandomInt(1000, 10000),
+    realname: 'Jay Doe',
+    image: [
+      { size: 'small',      '#text': userAvatar },
+      { size: 'medium',     '#text': userAvatar },
+      { size: 'large',      '#text': userAvatar },
+      { size: 'extralarge', '#text': userAvatar },
+    ],
+    gender: 'n',
+    name: 'jaydoe',
+  };
+
   const track = [];
   for (let i = 0; i < limit; i++) {
     const newTrack = { ...dummyTrack };
@@ -143,6 +142,7 @@ const fetchDummyData = (limit: number) => {
     newTrack.artist.name = artistNames[Math.floor(Math.random() * artistNames.length)];
     newTrack['@attr'].rank = i + 1;
     newTrack.playcount = i * (limit - i) * getRandomInt(10, 20);
+    newTrack.image = `${process.env.SEMANINHA_URL}/img/placeholders/cover-${i}.webp`;
     track.push(newTrack);
   }
 
@@ -150,7 +150,7 @@ const fetchDummyData = (limit: number) => {
   for (let i = 0; i < limit; i++) {
     artist.push({
       name: artistNames[Math.floor(Math.random() * artistNames.length)],
-      image: placeholderImage,
+      image: `${placeholderAvatarUrl}/${getRandomInt(0, 1000)}`,
       playcount: getRandomInt(2, 5) * (limit - i)
     });
   }
