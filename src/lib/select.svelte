@@ -1,12 +1,17 @@
 <script lang="ts">
   import type { Option } from '../interfaces';
 
-  export let label: string, selected: string, options: Option[];
+  export let label: string, selected: string, options: Option[], hasIconLeft = false;
 </script>
 
 <div>
   <label for="">{label}</label>
-  <select name="" id="" bind:value={selected}>
+  <select
+    name=""
+    id=""
+    bind:value={selected}
+    class:has-icon-left={hasIconLeft}
+  >
     {#each options as option}
       <option
         value={option.value}
@@ -51,6 +56,9 @@
 
       &:focus
         box-shadow: 0 0 0 2px $primary
+
+      &.has-icon-left
+        padding-left: 3rem
 
     img
       position: absolute

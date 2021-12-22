@@ -19,7 +19,7 @@
       flex-direction: column;
       padding: 8rem 4rem 4rem;
       font-family: 'Rubik', sans-serif;
-      background-image: linear-gradient(to bottom right, #0052D4, #4364F7, #6FB1FC);
+      background: {{fields.color}};
       color: #fff
     }
 
@@ -44,6 +44,7 @@
     ul li figure {
       width: 18rem;
       height: 18rem;
+      flex-shrink: 0;
       background-color: #000;
       background-position: center;
       background-repeat: no-repeat;
@@ -96,9 +97,9 @@
   </style>
 </head>
 <body>
-  <h1>Os artistas que eu mais ouvi nessa semana:</h1>
+  <h1>{{title}} que eu mais ouvi nessa semana:</h1>
   <ul>
-    {{#each artists.artist}}
+    {{#each topx.topx}}
       <li>
         <figure style="background-image:url({{image}})"></figure>
         <div>

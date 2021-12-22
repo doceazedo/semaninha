@@ -1,11 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type { Theme } from '../interfaces';
-  import { theme as selected, ratio } from '../stores';
+  import { theme as selected, themes as globalThemes, ratio } from '../stores';
 
   let themes: Theme[] = [];
   onMount(async () => {
     themes = await(await fetch('/api/themes')).json();
+    $globalThemes = themes;
   });
 
   const updateTheme = () => {

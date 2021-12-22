@@ -2,13 +2,13 @@
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import {
-    Input,
+    Fields,
     Select,
     RatioOptions,
     Themes,
     Button
   } from '$lib';
-  import { username, period, ratio, theme, validUsername, step, blobURL } from '../../stores';
+  import { username, period, ratio, theme, validUsername, step, blobURL, fields } from '../../stores';
   import { periods } from '../../helpers';
   import { b64toBlob, download, generate } from '../../utils';
   import { UsernameInput } from '../../modules';
@@ -20,6 +20,7 @@
       username: $username,
       period: $period,
       ratio: $ratio,
+      fields: $fields
     };
 
     const [ resp, error ] = await generate($theme, data);
@@ -62,6 +63,10 @@
   
   <section class="section">
     <Themes />
+  </section>
+  
+  <section class="section">
+    <Fields />
   </section>
   
   <section class="section send">

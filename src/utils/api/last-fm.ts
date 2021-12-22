@@ -67,3 +67,52 @@ export const fetchTopArtists = async (user: string, period = '7day', limit = 4):
     null
   ];
 }
+
+export const fetchTopAlbums = async (user: string, period = '7day', limit = 4): Promise<[any, any]> => {
+  const data = await fetchLastFmData({
+    method: 'user.gettopalbums',
+    user,
+    period,
+    limit
+  });
+
+  if (data?.error) return [ null, { status: 500, body: { error: data?.message } } ];
+
+  for (const album of data.topalbums.album) {
+    const query = `${album.artist.name} ${album.name}`;
+    album.image = await fetchCoverImage(query.toLowerCase()); // TODO: return all sizes
+  }
+
+  return [
+    data.topalbums,
+    null
+  ];
+}
+
+export const fetchTopX = async (user: string, period = '7day', limit = 4, topx: string): Promise<[any, any]> => {
+  switch (topx) {
+    case 'tracks': {
+      const [ tracks, tracksError ] = await fetchTopTracks(user, period, limit);
+      if (tracksError) return [ tracks, tracksError ];
+      
+      return [ { topx: tracks.track }, null ];
+      break;
+    }
+
+    case 'artists': {
+      const [ artists, artistsError ] = await fetchTopArtists(user, period, limit);
+      if (artistsError) return [ artists, artistsError ];
+
+      return [ { topx: artists.artist }, null ];
+      break;
+    }
+
+    case 'albums': {
+      const [ albums, albumsError ] = await fetchTopAlbums(user, period, limit);
+      if (albumsError) return [ albums, albumsError ];
+
+      return [ { topx: albums.album }, null ];
+      break;
+    }
+  }
+}

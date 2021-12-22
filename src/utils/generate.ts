@@ -1,10 +1,13 @@
-interface data {
+import type { Field } from '../interfaces';
+
+interface Data {
   username: string,
   period: string,
   ratio: string,
+  fields?: Field[]
 }
 
-const generate = async (theme: string, data: data): Promise<[Response, boolean]> => {
+const generate = async (theme: string, data: Data): Promise<[Response, boolean]> => {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   
@@ -12,6 +15,7 @@ const generate = async (theme: string, data: data): Promise<[Response, boolean]>
     user: data.username,
     period: data.period,
     ratio: data.ratio,
+    fields: data?.fields
   });
   
   const requestOptions = {
