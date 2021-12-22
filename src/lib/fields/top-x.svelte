@@ -6,7 +6,7 @@
   const options: Option[] = [
     { label: 'Top músicas', value: 'tracks' },
     { label: 'Top artistas', value: 'artists' },
-    { label: 'Top álbums', value: 'albums' },
+    { label: 'Top álbuns', value: 'albums' },
   ];
 
   $fields = { ...$fields, topx: 'tracks' };

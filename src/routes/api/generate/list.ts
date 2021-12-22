@@ -14,7 +14,7 @@ export async function post(request): Promise<EndpointOutput> {
   const titles = {
     'tracks':  'As músicas',
     'artists': 'Os artistas',
-    'albums':  'Os álbums',
+    'albums':  'Os álbuns',
   };
   params.title = titles[params.fields.topx];
 

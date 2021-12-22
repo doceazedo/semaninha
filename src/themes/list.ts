@@ -18,7 +18,7 @@ const list: Theme = {
           ],
         },
         {
-          name: 'Luxuária',
+          name: 'Luxúria',
           color: [
             'linear-gradient(to bottom right, #ed213a, #93291e)'
           ],
