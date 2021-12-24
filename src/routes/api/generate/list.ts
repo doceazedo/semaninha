@@ -11,12 +11,22 @@ export async function post(request): Promise<EndpointOutput> {
   if (topxError) return topxError;
   params.topx = topx;
 
-  const titles = {
+  const titlesByX = {
     'tracks':  'As músicas',
     'artists': 'Os artistas',
     'albums':  'Os álbuns',
   };
-  params.title = titles[params.fields.topx];
+
+  const titlesByPeriod = {
+    '7day':    'nessa semana',
+    '1month':  'nesse mês',
+    '3month':  'em 3 meses',
+    '6month':  'em 6 meses',
+    '12month': 'nesse ano',
+    'overall': 'de sempre',
+  };
+
+  params.title = `${titlesByX[params.fields.topx]} que eu mais ouvi ${titlesByPeriod[params.period]}:`;
 
   const color = theme.fields.find(x => x.id == 'color');
   params.fields.color = color.colors[params.fields.color].color[0];
