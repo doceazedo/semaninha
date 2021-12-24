@@ -16,8 +16,8 @@
 
     ul {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: repeat({{size}}, 1fr);
+      grid-template-rows: repeat({{size}}, 1fr);
       height: 100%;
     }
 
@@ -43,9 +43,11 @@
 </head>
 <body>
   <ul>
-    {{#each tracks.track}}
+    {{#each topx.topx}}
       <li style="background-image:url('{{image}}')">
-        <span>{{artist.name}} - {{name}}</span>
+        {{#if @root.fields.bool}}
+          <span>{{#if artist}}{{artist.name}} - {{/if}}{{name}}</span>
+        {{/if}}
       </li>
     {{/each}}
   </ul>

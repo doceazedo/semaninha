@@ -2,7 +2,7 @@
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { themes, theme } from '../stores';
-  import { Color, TopX } from '$lib/fields';
+  import { Bool, Color, Select, TopX } from '$lib/fields';
   import type { Theme } from '../interfaces';
 
   const findTheme = () => $themes?.find(x => x.slug == $theme);
@@ -14,8 +14,12 @@
   {#if themeDetails?.fields}
     {#each themeDetails.fields as field}
       <li transition:slide={{duration: 200, easing: quintOut }}>
-        {#if field.id == 'color'}
+        {#if field.id == 'bool'}
+          <Bool label={field.label} />
+        {:else if field.id == 'color'}
           <Color colors={field.colors} />
+        {:else if field.id == 'select'}
+          <Select label={field.label} values={field.values} />
         {:else if field.id == 'topx'}
           <TopX />
         {/if}
