@@ -15,7 +15,7 @@
 </section>
 
 <style lang="sass">
-  @import '../../vars'
+  @import '../../../vars'
 
   .section
     display: flex

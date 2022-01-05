@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { ratio as selected } from '../stores';
-  import { ratios } from '../helpers';
+  import { ratio as selected } from '../../../stores';
+  import { ratios } from '../../../helpers';
 </script>
 
 <div>
@@ -16,7 +16,7 @@
 </div>
 
 <style lang="sass">
-  @import '../vars'
+  @import '../../../vars'
 
   div
     position: relative

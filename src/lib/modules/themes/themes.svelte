@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import type { Theme } from '../interfaces';
-  import { theme as selected, themes as globalThemes, ratio } from '../stores';
+  import type { Theme } from '../../../interfaces';
+  import { theme as selected, themes as globalThemes, ratio } from '../../../stores';
 
   let themes: Theme[] = [];
   onMount(async () => {
@@ -47,7 +47,7 @@
 </div>
 
 <style lang="sass">
-  @import '../vars'
+  @import '../../../vars'
 
   .themes
     display: flex

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-  import { themes, theme } from '../stores';
-  import { Bool, Color, Select, TopX } from '$lib/fields';
-  import type { Theme } from '../interfaces';
+  import { themes, theme } from '../../../stores';
+  import { Bool, Color, Select, TopX } from './fields';
+  import type { Theme } from '../../../interfaces';
 
   const findTheme = () => $themes?.find(x => x.slug == $theme);
   let themeDetails: Theme = null;

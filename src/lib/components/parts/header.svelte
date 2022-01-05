@@ -10,7 +10,7 @@
 </svg>
 
 <style lang="sass">
-  @import '../vars'
+  @import '../../../vars'
 
   header
     background-color: $darker

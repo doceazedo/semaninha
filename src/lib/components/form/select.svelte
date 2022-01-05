@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Option } from '../interfaces';
+  import type { Option } from '../../../interfaces';
 
   export let label: string, selected: string, options: Option[], hasIconLeft = false;
 </script>
@@ -24,7 +24,7 @@
 </div>
 
 <style lang="sass">
-  @import '../vars'
+  @import '../../../vars'
 
   div
     position: relative

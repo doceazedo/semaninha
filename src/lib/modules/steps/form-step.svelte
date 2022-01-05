@@ -2,17 +2,20 @@
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { browser } from '$app/env';
+  import { Select, RatioOptions, Button } from '$lib/components/form';
+  import { ThemeOptions, Themes, UsernameInput } from '$lib/modules';
   import {
-    Fields,
-    Select,
-    RatioOptions,
-    Themes,
-    Button
-  } from '$lib';
-  import { username, period, ratio, theme, validUsername, step, blobURL, fields } from '../../stores';
-  import { periods } from '../../helpers';
-  import { b64toBlob, download, generate } from '../../utils';
-  import { UsernameInput } from '../../modules';
+    username,
+    period,
+    ratio,
+    theme,
+    validUsername,
+    step,
+    blobURL,
+    fields
+  } from '../../../stores';
+  import { periods } from '../../../helpers';
+  import { b64toBlob, download, generate } from '../../../utils';
 
   const send = async () => {
     $step = 'loading';
@@ -69,7 +72,7 @@
   </section>
   
   <section class="section">
-    <Fields />
+    <ThemeOptions />
   </section>
   
   <section class="section send">

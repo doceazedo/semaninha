@@ -7,7 +7,7 @@
 </button>
 
 <style lang="sass">
-  @import '../vars'
+  @import '../../../vars'
 
   button
     background: $primary

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Header, Footer } from '$lib';
-  import { FormStep, LoadingStep, ResultStep } from '$lib/steps';
+  import { Header, Footer } from '$lib/components/parts';
+  import { FormStep, LoadingStep, ResultStep } from '$lib/modules/steps';
   import { step } from '../stores';
 </script>
 

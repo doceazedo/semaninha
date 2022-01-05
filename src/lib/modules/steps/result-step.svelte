@@ -4,7 +4,7 @@
   import { slide } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import confetti from 'canvas-confetti';
-  import { blobURL, step, ratio } from '../../stores';
+  import { blobURL, step, ratio } from '../../../stores';
 
   let instagramUrl = 'instagram://story-camera';
 
@@ -54,7 +54,7 @@
 </section>
 
 <style lang="sass">
-  @import '../../vars'
+  @import '../../../vars'
 
   .section
     display: flex

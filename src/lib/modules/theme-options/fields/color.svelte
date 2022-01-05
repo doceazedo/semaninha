@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Select } from '$lib';
-  import { fields } from '../../stores';
-  import type { Color, ColorOption } from '../../interfaces';
+  import { Select } from '$lib/components/form';
+  import { fields } from '../../../../stores';
+  import type { Color, ColorOption } from '../../../../interfaces';
 
   export let colors: Color[];
   let options: ColorOption[] = [];

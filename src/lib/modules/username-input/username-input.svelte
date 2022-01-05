@@ -3,9 +3,9 @@
   import { scale } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
   import { browser } from '$app/env';
-  import { username, validUsername } from '../stores';
-  import { Input } from '$lib/form';
-  import { WarningIcon } from '$lib/icons';
+  import { username, validUsername } from '../../../stores';
+  import { Input } from '$lib/components/form';
+  import { WarningIcon } from '$lib/components/icons';
 
   let delay: any;
   let avatar: string;
@@ -51,7 +51,7 @@
 </div>
 
 <style lang="sass">
-  @import '../vars'
+  @import '../../../vars'
 
   div
     position: relative

@@ -11,7 +11,7 @@
 </div>
 
 <style lang="sass">
-  @import '../../vars'
+  @import '../../../vars'
 
   div
     display: flex

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Select } from '$lib';
-  import { fields } from '../../stores';
-  import type { Option } from '../../interfaces';
+  import { Select } from '$lib/components/form';
+  import { fields } from '../../../../stores';
+  import type { Option } from '../../../../interfaces';
 
   export let label = '';
 
