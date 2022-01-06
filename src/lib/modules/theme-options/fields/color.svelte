@@ -6,11 +6,15 @@
   export let colors: Color[];
   let options: ColorOption[] = [];
 
+  const colorArrayToGradient = (colors: string[]) => {
+    return `linear-gradient(to bottom right, ${colors[0]} 0%, ${colors[0]} 50%, ${colors[1]} 50%, ${colors[1]} 100%)`;
+  }
+
   colors.forEach((color, i) => {
     options.push({
       value: String(i),
       label: color.name,
-      color: color.color[0]
+      color: color.color.length == 2 ? colorArrayToGradient(color.color) : color.color[0],
     });
   });
   options = options;
