@@ -1,1 +1,0 @@
-export { default as RibbonBeta } from './ribbon-beta.svelte';

@@ -1,6 +1,8 @@
 <header>
   <section class="section">
-    <img src="img/logo.svg" alt="Logotipo Semaninha">
+    <a href="/">
+      <img src="img/logo.svg" alt="Logotipo Semaninha">
+    </a>
     <h2>Gere colagens das músicas que você mais ouviu no last.fm e compartilhe sua <b>semaninha</b> nas redes sociais.</h2>
   </section>
 </header>
