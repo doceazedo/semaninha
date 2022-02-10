@@ -1,0 +1,32 @@
+{
+  "name": "Semaninha",
+  "description": "Last.fm collage generator powered by SvelteKit and Puppeteer",
+  "repository": "https://github.com/doceazedo/semaninha",
+  "website": "https://semaninha.com",
+  "logo": "https://raw.githubusercontent.com/doceazedo/semaninha/main/static/img/logo.svg",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/jontewks/puppeteer.tgz"
+    }
+  ],
+  "env": {
+    "SEMANINHA_URL": {
+      "description": "The base URL of your application"
+    },
+    "LASTFM_KEY": {
+      "description": "Your Last.fm application API key"
+    },
+    "SPOTIFY_REFRESH_TOKEN": {
+      "description": "Your Spotify refresh token"
+    },
+    "SPOTIFY_CLIENT_ID": {
+      "description": "Your Spotify application client ID"
+    },
+    "SPOTIFY_CLIENT_SECRET": {
+      "description": "Your Spotify application client secret"
+    }
+  }
+}
