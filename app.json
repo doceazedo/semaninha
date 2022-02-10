@@ -3,7 +3,7 @@
   "description": "Last.fm collage generator powered by SvelteKit and Puppeteer",
   "repository": "https://github.com/doceazedo/semaninha",
   "website": "https://semaninha.com",
-  "logo": "https://raw.githubusercontent.com/doceazedo/semaninha/main/static/img/logo.svg",
+  "logo": "https://raw.githubusercontent.com/doceazedo/semaninha/main/static/img/favicon.png",
   "buildpacks": [
     {
       "url": "heroku/nodejs"
