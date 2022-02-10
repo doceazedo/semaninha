@@ -1,11 +1,13 @@
-<p align="center">
-  <a href="https://musicwrap.xyz">
-    <img src="./banner.jpg">
+<h1 align="center">
+  <a href="https://semaninha.com">
+    <img src="./static/img/logo.svg" height="64">
   </a>
+</h1>
+
+<p align="center">
+  <img src="./static/img/banner.jpg">
 </p>
 
-**musicwrap.xyz** is a website that allows you to generate collages with the songs you've heard the most in the last week, ready to be shared to your Instagram story. This repository contains the project's front-end built in React, while its API that generates the images is available at [musicwrap-api](https://github.com/doceazedo/musicwrap-api).
+**Semaninha** (previously, musicwrap.xyz) is a website that allows you to generate collages with the songs you listened to the most with different themes and ready to share. This is the third iteration of this project, it was originally developed in Svelte with a vanilla PHP backend, later rewritten with React and Fastify and now centralized in this single SvelteKit application.
 
----
-
-O **musicwrap.xyz** é um site que te permite gerar colagens com as músicas que você mais ouviu na última semana, pronta para ser compartilhada nos stories. Esse repositório contém o front-end do projeto construído em React, já a API que cria as imagens está disponível em [musicwrap-api](https://github.com/doceazedo/musicwrap-api).
+✨ _Documentation on how to collaborate and create new themes coming really soon!_

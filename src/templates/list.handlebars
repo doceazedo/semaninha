@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap');
+
+    /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      padding: 8rem 4rem 4rem;
+      font-family: 'Rubik', sans-serif;
+      background: {{fields.color}};
+      color: #fff
+    }
+
+    body > h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 8rem
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    ul li {
+      display: flex
+    }
+
+    ul li figure {
+      width: 18rem;
+      height: 18rem;
+      flex-shrink: 0;
+      background-color: #000;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    ul li div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 4rem;
+    }
+
+    ul li h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+    }
+
+    ul li h2 {
+      font-size: 3rem;
+      opacity: .75;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      margin-top: 8rem;
+    }
+
+    footer figure {
+      width: 4rem;
+      height: 4rem;
+      margin-right: 1rem;
+      border-radius: 50%;
+      background-color: #000;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    footer span {
+      font-size: 2rem;
+      opacity: .75;
+    }
+
+    footer svg {
+      height: 4rem;
+      margin-left: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>{{title}}</h1>
+  <ul>
+    {{#each topx.topx}}
+      <li>
+        <figure style="background-image:url({{image}})"></figure>
+        <div>
+          <h1>{{name}}</h1>
+          <h2>{{playcount}} vezes</h2>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+
+  <footer>
+    <figure style="background-image:url({{user.image.[3].[#text]}})"></figure>
+    <span>@{{user.name}}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050.49 159.24"><path d="M98,89.91C88.47,93.1,85.28,77.16,85.28,77.16s4.36-4.37,1.06-8.25c5.13-5.13,2.14-7.7,2.14-7.7a22.54,22.54,0,0,0-31.89,0,19.17,19.17,0,0,0-2.5,3.06c-.27.39-.51.78-.76,1.18l-.07.12a22.44,22.44,0,0,0-2.72,6.81A17.5,17.5,0,0,1,47,77.16C40.65,83.53,24.7,74,12,86.72a2.55,2.55,0,0,0-.31.47c-.43.38-.87.71-1.28,1.13-15,15-13.55,40.67,3.19,57.4,15.89,15.89,39.86,17.94,55.06,5.27a3,3,0,0,0,.74-.49c.32-.32.57-.63.87-.94s.49-.42.73-.65c7.63-7.64,10.56-16.82,9.4-26.21-.3-4.46-.74-8,1.76-10.46,3.19-3.19,12.76,0,19.13-6.38C110.79,96.29,104.09,87.9,98,89.91Z" style="fill:#ff0b55"/><path d="M67.19,82.47,136.36,13.3l9.56,9.57L76.75,92.05Z" style="fill:#292f33"/><path d="M44.7,128.58c8,5.76,8.84,15.66,8.38,21.43a3,3,0,0,0,4.42,2.87c11.56-6.57,20.75-17.09,18.21-35.42-.5-3.31.5-9.54,10.25-10.85s13.26-5,14.46-6.69c.69-1,1.31-3.75-1.4-3.85s-9.45,2-15.48-5.13-7-10-7.23-11.15S70,63.13,64.92,71.38c-4.18,6.86-8.83,20.34-23.84,23.85C35,96.65,27.24,99.76,25,104.07c-3.75,7.23,2.07,12.28,7.1,15.7S44.7,128.58,44.7,128.58Z" style="fill:#f5f8fa"/><path d="M58.55,84.74l6.38-6.38L80.87,94.3l-6.37,6.37ZM38.37,104.91l6.38-6.37,15.94,15.94-6.37,6.38Z" style="fill:#292f33"/><path d="M33,119.81l98.32-98.14,2.39,2.39L35.35,122.2Zm3.92,3.91,98.32-98.13L137.58,28,39.27,126.13Z" style="fill:#ccd6dd"/><path d="M43.86,124.93a4.51,4.51,0,0,1-6.37,6.38l-9.57-9.57a4.5,4.5,0,0,1,0-6.37h0a4.51,4.51,0,0,1,6.38,0Z" style="fill:#292f33"/><circle cx="58.35" cy="130.48" r="4.51" style="fill:#292f33"/><path d="M64.74,141a3.1,3.1,0,1,1-3.09-3.09A3.09,3.09,0,0,1,64.74,141Z" style="fill:#292f33"/><path d="M157.83,17.67a4.82,4.82,0,0,1,0,6.81L138.16,38.1a4.83,4.83,0,0,1-6.81,0L121.14,27.88a4.82,4.82,0,0,1,0-6.81L134.76,1.4a4.83,4.83,0,0,1,6.81,0Z" style="fill:#ff0b55"/><circle cx="144.46" cy="39.6" r="2.82" style="fill:#66757f"/><circle cx="150.14" cy="35.79" r="2.82" style="fill:#66757f"/><circle cx="155.81" cy="31.97" r="2.82" style="fill:#66757f"/><circle cx="120.06" cy="14.38" r="2.82" style="fill:#66757f"/><circle cx="123.86" cy="8.79" r="2.82" style="fill:#66757f"/><circle cx="127.67" cy="3.2" r="2.82" style="fill:#66757f"/><path d="M263.37,63A19.28,19.28,0,0,0,256,58.49a32.26,32.26,0,0,0-9.43-1.18H228.09a19.28,19.28,0,0,0-7.86,1.29q-2.8,1.3-2.81,3.88a3.71,3.71,0,0,0,1.74,3.14q1.74,1.25,7.25,2.14l30.1,2.69a31.94,31.94,0,0,1,10.79,3.43,22,22,0,0,1,6.79,5.73A19.86,19.86,0,0,1,277.63,87a33.36,33.36,0,0,1,1,8.2,22.05,22.05,0,0,1-2.13,9.77,21.23,21.23,0,0,1-6.07,7.47,28.55,28.55,0,0,1-9.66,4.78,45.87,45.87,0,0,1-12.92,1.68H229q-26.51,0-35.05-16.29L211.8,91.24q3.38,5.73,7.59,7.64a24,24,0,0,0,9.94,1.91H248.2q10.11,0,10.11-6.07a4.54,4.54,0,0,0-2.13-4.21,19.26,19.26,0,0,0-6.07-2.08L218,85a31.38,31.38,0,0,1-9.71-3,21,21,0,0,1-6.46-5,18.68,18.68,0,0,1-3.6-6.46,24.13,24.13,0,0,1-1.12-7.36q0-11.46,8.31-17.75T229,39.11h18.09q20.78,0,30.44,10.68Z" style="fill:#fff"/><path d="M364.13,40.12V59H310.88V69.67h47V88.32h-47V99h53.25v18.87H290V40.12Z" style="fill:#fff"/><path d="M378.06,40.12h19.88l31.23,39.21,31.12-39.21h19.88v77.74H459.5V72.36l-24.83,31.57h-11L398.84,72.36v45.5H378.06Z" style="fill:#fff"/><path d="M530.16,40.12H552l40.44,77.74H569.81l-6.74-14.27H519l-6.74,14.27H489.72Zm24.15,45.72L541.05,59.9,527.8,85.84Z" style="fill:#fff"/><path d="M670,40.12h20.67v77.74H671.81L622.72,72.25v45.61H601.94V40.12h19L670,85.84Z" style="fill:#fff"/><path d="M707,117.86V40.12h21.12v77.74Z" style="fill:#fff"/><path d="M812.45,40.12h20.67v77.74H814.25L765.16,72.25v45.61H744.38V40.12h19l49.09,45.72Z" style="fill:#fff"/><path d="M917.15,69.33V40.12h21v77.74h-21V88.54H870.53v29.32H849.41V40.12h21.12V69.33Z" style="fill:#fff"/><path d="M988.25,40.12h21.8l40.44,77.74h-22.58l-6.74-14.27h-44l-6.74,14.27H947.81Zm24.16,45.72L999.15,59.9,985.89,85.84Z" style="fill:#fff"/></svg>
+  </footer>
+</body>
+</html>

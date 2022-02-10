@@ -1,42 +1,38 @@
 {
-  "name": "musicwrap",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.1",
-    "canvas-confetti": "^1.4.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-lottie": "^1.2.3",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.3.0",
-    "web-vitals": "^1.0.1"
-  },
+  "name": "musicwrap-sveltekit",
+  "version": "0.0.1",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview",
+    "start": "node build",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "eslint --ignore-path .gitignore ."
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "@sveltejs/adapter-node": "^1.0.0-next.55",
+    "@sveltejs/kit": "next",
+    "@types/spotify-web-api-node": "^5.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.4.1",
+    "eslint-plugin-svelte3": "^3.2.1",
+    "sass": "^1.45.0",
+    "svelte": "^3.44.3",
+    "svelte-check": "^2.2.10",
+    "svelte-preprocess": "^4.10.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "type": "module",
+  "dependencies": {
+    "@lottiefiles/svelte-lottie-player": "^0.2.0",
+    "canvas-confetti": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "handlebars": "^4.7.7",
+    "puppeteer": "^13.0.0",
+    "spotify-web-api-node": "^5.0.2",
+    "tinycolor2": "^1.4.2"
   }
 }

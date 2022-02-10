@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+    /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat({{size}}, 1fr);
+      grid-template-rows: repeat({{size}}, 1fr);
+      height: 100%;
+    }
+
+    ul li {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: .5rem;
+    }
+
+    ul li span {
+      font-size: .75rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      text-align: right;
+      color: #fff;
+      text-shadow: 2px 2px 2px #000;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    {{#each topx.topx}}
+      <li style="background-image:url('{{image}}')">
+        {{#if @root.fields.bool}}
+          <span>{{#if artist}}{{artist.name}} - {{/if}}{{name}}</span>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+</body>
+</html>

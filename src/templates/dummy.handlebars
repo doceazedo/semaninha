@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+
+    /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+    body,
+    html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: 'Kalam', cursive;
+      font-size: 3rem;
+      padding: 0 3rem;
+      background-image: linear-gradient(319deg, #bbff99 0%, #ffec99 37%, #ff9999 100%);
+    }
+
+    h1 {
+      font-size: 6rem;
+    }
+
+    figure {
+      height: 32rem;
+      width: 32rem;
+      background-image: url('{{user.image.[3].[#text]}}');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 50%;
+      margin: 3rem 0;
+    }
+
+    @media (height: 1080px) and (width: 1080px) {
+      body {
+        background-image: linear-gradient(315deg, #c73e1d 0%, #a23b72 37%, #2e86ab 100%);
+      }
+
+      figure {
+        height: 24rem;
+        width: 24rem;
+      }
+    }
+
+    @media (height: 1080px) and (width: 1920px) {
+      body {
+        background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>dummy theme!</h1>
+  <p>esse é um tema de modelo que ajuda a testar as coisas :)</p>
+  <figure></figure>
+  <p>(esse sou eu, {{user.name}})</p>
+</body>
+</html>
