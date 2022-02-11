@@ -10,7 +10,7 @@ interface Params {
   fields?: Field[]
 }
 
-const validateGenerateRequest = async (params: Params, ratios: Ratio[], fields: Field[] = []): Promise<[any, any]> => {
+export const validateGenerateRequest = async (params: Params, ratios: Ratio[], fields: Field[] = []): Promise<[any, any]> => {
   const [ user, userError ] = await fetchUser(params?.user);
   if (userError) return [ null, { status: 400, body: { error: userError } } ];
 
@@ -34,5 +34,3 @@ const validateGenerateRequest = async (params: Params, ratios: Ratio[], fields: 
 
   return [ params, null ];
 }
-
-export default validateGenerateRequest;

@@ -119,7 +119,7 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const fetchDummyData = (limit: number) => {
+export const fetchDummyData = (limit: number) => {
   const userAvatar = `${placeholderAvatarUrl}/${getRandomInt(0, 1000)}`;
   const user = {
     playcount: getRandomInt(1000, 10000),
@@ -168,5 +168,3 @@ const fetchDummyData = (limit: number) => {
     }
   }
 }
-
-export default fetchDummyData;

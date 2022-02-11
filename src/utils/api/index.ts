@@ -1,4 +1,4 @@
-export { default as fetchDummyData } from './fetch-dummy-data';
-export { default as generateScreenshot } from './generate-screenshot';
-export { default as handlebarsToImage } from './handlebars-to-image';
-export { default as validateGenerateRequest } from './validate-generate-request';
+export * from './fetch-dummy-data';
+export * from './generate-screenshot';
+export * from './handlebars-to-image';
+export * from './validate-generate-request';
