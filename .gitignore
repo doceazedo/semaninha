@@ -5,6 +5,5 @@ node_modules
 /package
 .env
 yarn.lock
-prisma/migrations/
 prisma/*.db
 prisma/*.db-journal
