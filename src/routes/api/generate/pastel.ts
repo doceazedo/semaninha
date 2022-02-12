@@ -1,12 +1,14 @@
 import type { EndpointOutput } from '@sveltejs/kit';
 import tinycolor from 'tinycolor2';
 import { pastel as theme } from '../../../themes';
-import { validateGenerateRequest, handlebarsToImage } from '../../../utils/api';
+import { validateGenerateRequest, logUsage, handlebarsToImage } from '../../../utils/api';
 import { fetchTopX } from '../../../utils/api/last-fm';
 
 export async function post(request): Promise<EndpointOutput> {
   const [ params, validationError ] = await validateGenerateRequest(request.body, theme.ratios);
   if (validationError) return validationError;
+
+  const start = new Date();
 
   const [ topx, topxError ] = await fetchTopX(params.user.name, params.period, 3, params.fields.topx);
   if (topxError) return topxError;
@@ -35,5 +37,10 @@ export async function post(request): Promise<EndpointOutput> {
   params.fields.textColor = tinycolor(params.fields.colors[0]).getBrightness() > 75 ? '#000' : '#fff';
 
   const result = await handlebarsToImage(theme.slug, params);
+
+  const end = new Date();
+  const timeElapsed = end.getTime() - start.getTime();
+  logUsage(params.user.name, theme.slug, timeElapsed, params?.fields);
+  
   return result;
 }

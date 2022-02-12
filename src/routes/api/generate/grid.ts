@@ -1,11 +1,13 @@
 import type { EndpointOutput } from '@sveltejs/kit';
 import { grid as theme } from '../../../themes';
-import { validateGenerateRequest, handlebarsToImage } from '../../../utils/api';
+import { validateGenerateRequest, logUsage, handlebarsToImage } from '../../../utils/api';
 import { fetchTopX } from '../../../utils/api/last-fm';
 
 export async function post(request): Promise<EndpointOutput> {
   const [ params, validationError ] = await validateGenerateRequest(request.body, theme.ratios);
   if (validationError) return validationError;
+
+  const start = new Date();
 
   let limit: number;
   switch (params.fields.select) {
@@ -32,5 +34,10 @@ export async function post(request): Promise<EndpointOutput> {
   if (params.size == 10) params.fields.bool = false;
 
   const result = await handlebarsToImage(theme.slug, params);
+
+  const end = new Date();
+  const timeElapsed = end.getTime() - start.getTime();
+  logUsage(params.user.name, theme.slug, timeElapsed, params?.fields);
+
   return result;
 }

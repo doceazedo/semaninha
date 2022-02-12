@@ -4,3 +4,7 @@ node_modules
 /.svelte-kit
 /package
 .env
+yarn.lock
+prisma/migrations/
+prisma/*.db
+prisma/*.db-journal
