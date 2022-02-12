@@ -27,10 +27,24 @@ export const fetchArtistImage = async (name: string): Promise<string> => {
   return artist ? artist.images[0].url : '';
 }
 
-export const fetchCoverImage = async (query: string): Promise<string> => {
+export const fetchAlbumCover = async (artist: string, title: string): Promise<string> => {
   await setupApi();
 
-  const tracks = await spotifyApi.searchTracks(query, { limit: 1 });
+  const query = `${artist} ${title}`;
+  const albums = await spotifyApi.searchAlbums(query, { limit: 10 });
+  const items = albums.body.albums.items;
+  const album = items.find(item => item.artists[0].name == artist && item.name.toLowerCase() == title.toLowerCase());
+
+  return album ? album.images[0].url : '';
+}
+
+export const fetchTrackCover = async (artist: string, title: string): Promise<string> => {
+  await setupApi();
+
+  const query = `${artist} ${title}`;
+  const tracks = await spotifyApi.searchTracks(query, { limit: 10 });
   const items = tracks.body.tracks.items;
-  return items.length ? items[0].album.images[0].url : '';
+  const track = items.find(item => item.album.artists[0].name == artist);
+
+  return track ? track.album.images[0].url : '';
 }

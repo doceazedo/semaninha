@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
-import { covers } from '../../helpers';
-import { fetchArtistImage, fetchCoverImage } from './spotify';
+import { fetchArtistImage, fetchTrackCover, fetchAlbumCover } from './spotify';
 
 dotenv.config();
 
@@ -38,8 +37,7 @@ export const fetchTopTracks = async (user: string, period = '7day', limit = 4): 
   if (data?.error) return [ null, { status: 500, body: { error: data?.message } } ];
 
   for (const track of data.toptracks.track) {
-    const query = `${track.artist.name} ${track.name}`;
-    track.image = await fetchCoverImage(query.toLowerCase()); // TODO: return all sizes
+    track.image = await fetchTrackCover(track.artist.name, track.name); // TODO: return all sizes
   }
 
   return [
@@ -79,8 +77,7 @@ export const fetchTopAlbums = async (user: string, period = '7day', limit = 4): 
   if (data?.error) return [ null, { status: 500, body: { error: data?.message } } ];
 
   for (const album of data.topalbums.album) {
-    const query = `${album.artist.name} ${album.name}`;
-    album.image = await fetchCoverImage(query.toLowerCase()); // TODO: return all sizes
+    album.image = await fetchAlbumCover(album.artist.name, album.name); // TODO: return all sizes
   }
 
   return [
