@@ -30,9 +30,6 @@
     },
     "SPOTIFY_CLIENT_SECRET": {
       "description": "Your Spotify application client secret"
-    },
-    "DATABASE_URL": {
-      "description": "PostgreSQL database URL"
     }
   }
 }
