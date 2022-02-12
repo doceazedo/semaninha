@@ -12,6 +12,9 @@
       "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/jontewks/puppeteer.tgz"
     }
   ],
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
   "env": {
     "SEMANINHA_URL": {
       "description": "The base URL of your application"
@@ -27,6 +30,9 @@
     },
     "SPOTIFY_CLIENT_SECRET": {
       "description": "Your Spotify application client secret"
+    },
+    "DATABASE_URL": {
+      "description": "PostgreSQL database URL"
     }
   }
 }
