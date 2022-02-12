@@ -3,8 +3,9 @@ import { list as theme } from '../../../themes';
 import { validateGenerateRequest, logUsage, handlebarsToImage } from '../../../utils/api';
 import { fetchTopX } from '../../../utils/api/last-fm';
 
-export async function post(request): Promise<EndpointOutput> {
-  const [ params, validationError ] = await validateGenerateRequest(request.body, theme.ratios, theme.fields);
+export async function post({ request }): Promise<EndpointOutput> {
+  const body = await request.json();
+  const [ params, validationError ] = await validateGenerateRequest(body, theme.ratios, theme.fields);
   if (validationError) return validationError;
 
   const start = new Date();

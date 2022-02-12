@@ -2,8 +2,9 @@ import type { EndpointOutput } from '@sveltejs/kit';
 import { dummy as theme } from '../../../themes';
 import { validateGenerateRequest, logUsage, handlebarsToImage } from '../../../utils/api';
 
-export async function post(request): Promise<EndpointOutput> {
-  const [ params, validationError ] = await validateGenerateRequest(request.body, theme.ratios);
+export async function post({ request }): Promise<EndpointOutput> {
+  const body = await request.json();
+  const [ params, validationError ] = await validateGenerateRequest(body, theme.ratios);
   if (validationError) return validationError;
 
   const start = new Date();
