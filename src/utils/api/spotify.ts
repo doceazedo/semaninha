@@ -33,7 +33,10 @@ export const fetchAlbumCover = async (artist: string, title: string): Promise<st
   const query = `${artist} ${title}`;
   const albums = await spotifyApi.searchAlbums(query, { limit: 10 });
   const items = albums.body.albums.items;
-  const album = items.find(item => item.artists[0].name == artist && item.name.toLowerCase() == title.toLowerCase());
+  let album = items.find(item => item.artists[0].name == artist && item.name.toLowerCase() == title.toLowerCase());
+
+  if (!album)
+    album = items.find(item => item.artists[0].name.toLowerCase() == artist.toLowerCase() && item.name.toLowerCase() == title.toLowerCase());
 
   return album ? album.images[0].url : '';
 }
@@ -44,7 +47,16 @@ export const fetchTrackCover = async (artist: string, title: string): Promise<st
   const query = `${artist} ${title}`;
   const tracks = await spotifyApi.searchTracks(query, { limit: 10 });
   const items = tracks.body.tracks.items;
-  const track = items.find(item => item.album.artists[0].name == artist);
+  let track = items.find(item =>
+    item.name == title &&
+    item.artists[0].name == artist
+  );
+
+  if (!track)
+    track = items.find(item =>
+      item.name.toLowerCase() == title.toLowerCase() &&
+      item.artists[0].name.toLowerCase() == artist.toLowerCase()
+    );
 
   return track ? track.album.images[0].url : '';
 }
