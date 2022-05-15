@@ -8,7 +8,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: node({ env: { port: process.env.PORT } }),
+		adapter: node(),
 	}
 };
 
