@@ -1,15 +1,33 @@
-import type { EndpointOutput } from '@sveltejs/kit';
-import * as themes from '../../themes';
-import dotenv from 'dotenv';
-dotenv.config();
+import fs from 'fs';
+import path from 'path';
+import 'dotenv/config';
+import matter from 'gray-matter';
+import type { RequestHandler } from '@sveltejs/kit';
 
-export async function get(): Promise<EndpointOutput> {
-  let themesList = Object.values(themes);
-  if (process.env.NODE_ENV != 'development') {
-    themesList = themesList.filter(theme => theme.slug != 'dummy');
-  }
+const themesPath = path.resolve(process.cwd(), 'src/lib/themes');
+const themeFiles = fs.readdirSync(themesPath);
+const themes = themeFiles.map((fileName) => {
+  const ext = fileName.split('.').pop();
+  if (ext != 'svelte') return null;
+
+  const filePath = path.resolve(themesPath, fileName);
+  const content = matter.read(filePath, { delimiters: ['<!--', '-->']});
+  return {
+    slug: fileName.replace(/\.[^/.]+$/, ''),
+    ...content.data
+  };
+}).filter(x => !!x);
+
+export const get: RequestHandler = () => {
+   
+
+  // if (process.env.NODE_ENV != 'development') {
+  //   themesList = themesList.filter(theme => theme.slug != 'dummy');
+  // }
   
   return {
-    body: Object.values(themesList)
+    body: {
+      themes
+    }
   }
 }

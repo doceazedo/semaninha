@@ -54,7 +54,7 @@
 </section>
 
 <style lang="sass">
-  @import '../../../vars'
+  @import '../../../sass/vars'
 
   .section
     display: flex

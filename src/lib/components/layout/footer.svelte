@@ -11,7 +11,7 @@
 </footer>
 
 <style lang="sass">
-  @import '../../../vars'
+  @import '../../../sass/vars'
 
   footer
     margin-top: 3rem

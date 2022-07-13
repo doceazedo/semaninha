@@ -47,7 +47,7 @@
 </div>
 
 <style lang="sass">
-  @import '../../../vars'
+  @import '../../../sass/vars'
 
   .themes
     display: flex

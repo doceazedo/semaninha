@@ -1,9 +1,5 @@
 <script lang="ts">
-  import { Header, Footer, RibbonBeta } from '$lib/components/layout';
+  import '../sass/minireset.sass';
 </script>
 
-<Header />
 <slot />
-<Footer />
-
-<RibbonBeta />
